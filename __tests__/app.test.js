@@ -127,5 +127,108 @@ describe('app routes', () => {
 
 
     });
+
+    test('creates a new plant and is added to the plant inventory', async() => { 
+
+      const newPlant = {
+
+        image: 'snake-plant.png',
+        genus:  'Sansevieria cylindrical',
+        size: 'Medium',
+        light: 'Indirect',
+        price: '15',
+        name:  'Cylindrical Snake Plant',
+        owner_id: 1
+      };
+      const expectation = {
+        ...newPlant,
+        id: 7,
+        owner_id: 1,
+      };
+
+      const data = await fakeRequest(app)
+        .post('/plants')
+        .send(newPlant)
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(data.body).toEqual(expectation);
+
+      const allPlants = await fakeRequest(app)
+
+        .get('/plants')
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      const snakePlant = allPlants.body.find(plant => plant.name === 'Cylindrical Snake Plant');
+      
+      expect(snakePlant).toEqual(expectation);
+    });
+
+    test('updates a plant in the inventory', async() => { 
+      
+      const existingPlant = {  
+        image: 'mother-tongue.png',
+        genus: 'Sansevieria trifasciata',
+        size: 'Medium',
+        light: 'Medium Light',
+        price: '25',
+        name: 'Mother-in-laws Tongue',
+       
+      };
+
+      const expectation = { 
+        ...existingPlant,
+        owner_id: 1,
+        id: 3
+
+      };
+
+      await fakeRequest(app)
+        .put('/plants/3')
+        .send(existingPlant)
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      const updatedPlant = await fakeRequest(app)
+        .get('/plants/3')
+        .expect('Content-Type', /json/)
+        .expect(200);
+      
+      expect(updatedPlant.body[0]).toEqual(expectation);
+
+    });
+
+    test('deletes a plant from the plant directory', async() => { 
+      
+      const deletedPlant = { 
+       
+        id: 5, 
+        image: 'rubber-tree.png',
+        genus: 'Ficus elastica',
+        size: 'Medium',
+        light: 'Low Light',
+        price: '35',
+        name: 'Rubber Tree',
+        owner_id: 1
+      };
+
+      const data = await fakeRequest(app)
+        .delete('/plants/5')
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(data.body).toEqual(deletedPlant);
+
+      const nothing = await fakeRequest(app)
+        .get('/plants/5')
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(nothing.body).toEqual([]);
+    });
+
   });
 });
+
+
