@@ -228,6 +228,31 @@ describe('app routes', () => {
       expect(nothing.body).toEqual([]);
     });
 
+    test('returns plants sizes', async() => {
+
+      const expectation = [
+        {
+          'id': 1,
+          'sizes': 'Small'
+        },
+        {
+          'id': 2,
+          'sizes': 'Medium'
+        },
+        {
+          'id': 3,
+          'sizes': 'Large'
+        }
+      ];
+
+      const data = await fakeRequest(app)
+        .get('/sizes')
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(data.body).toEqual(expectation);
+
+    });
   });
 });
 
