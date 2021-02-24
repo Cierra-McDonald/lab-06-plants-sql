@@ -3,7 +3,7 @@ module.exports = [
     id: 1, 
     image: 'silver-evergreen.png',
     genus: 'Aglaonema', 
-    size: 'Medium',
+    sizes_id: 2,
     light: 'Low Light',
     price: '60',
     name: 'Silver Evergreen'
@@ -12,7 +12,7 @@ module.exports = [
     id: 2, 
     image: 'dragon-tree.png',
     genus: 'Dracaena marginata',
-    size: 'Medium',
+    sizes_id: 2,
     light: 'Medium Light',
     price: '25',
     name: 'Dragon Tree'
@@ -21,7 +21,7 @@ module.exports = [
     id: 3, 
     image: 'mother-tongue.png',
     genus: 'Sansevieria trifasciata',
-    size: 'Medium',
+    sizes_id: 2,
     light: 'Medium Light',
     price: '40',
     name: 'Mother-in-laws Tongue'
@@ -30,7 +30,7 @@ module.exports = [
     id: 4, 
     image: 'peace-lily.png',
     genus:  'Spathiphyllum',
-    size: 'Large',
+    sizes_id: 3,
     light: 'High Light',
     price: '30',
     name:  'Peace - Lily'
@@ -39,7 +39,7 @@ module.exports = [
     id: 5, 
     image: 'rubber-tree.png',
     genus: 'Ficus elastica',
-    size: 'Medium',
+    sizes_id: 2,
     light: 'Low Light',
     price: '35',
     name: 'Rubber Tree'
@@ -48,7 +48,7 @@ module.exports = [
     id: 6, 
     image: 'aloe-vera.png',
     genus: 'Aloe barbadenis Miller',
-    size: 'Medium',
+    sizes_id: 2,
     light: 'High Light',
     price: '15',
     name: 'Aloe Vera'

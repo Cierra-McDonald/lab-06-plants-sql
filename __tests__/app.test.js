@@ -35,64 +35,64 @@ describe('app routes', () => {
 
       const expectation = [
         {
-          id: 1, 
-          image: 'silver-evergreen.png',
-          genus: 'Aglaonema', 
-          size: 'Medium',
-          light: 'Low Light',
-          price: '60',
-          name: 'Silver Evergreen',
-          owner_id: 1
-        }, 
-        {
-          id: 2, 
-          image: 'dragon-tree.png',
-          genus: 'Dracaena marginata',
-          size: 'Medium',
-          light: 'Medium Light',
-          price: '25',
-          name: 'Dragon Tree',
-          owner_id: 1
+          'id': 6,
+          'image': 'aloe-vera.png',
+          'genus': 'Aloe barbadenis Miller',
+          'sizes_id': 2,
+          'light': 'High Light',
+          'price': '15',
+          'name': 'Aloe Vera',
+          'owner_id': 1
         },
         {
-          id: 3, 
-          image: 'mother-tongue.png',
-          genus: 'Sansevieria trifasciata',
-          size: 'Medium',
-          light: 'Medium Light',
-          price: '40',
-          name: 'Mother-in-laws Tongue',
-          owner_id: 1
+          'id': 5,
+          'image': 'rubber-tree.png',
+          'genus': 'Ficus elastica',
+          'sizes_id': 2,
+          'light': 'Low Light',
+          'price': '35',
+          'name': 'Rubber Tree',
+          'owner_id': 1
         },
         {
-          id: 4, 
-          image: 'peace-lily.png',
-          genus:  'Spathiphyllum',
-          size: 'Large',
-          light: 'High Light',
-          price: '30',
-          name:  'Peace - Lily',
-          owner_id: 1
+          'id': 3,
+          'image': 'mother-tongue.png',
+          'genus': 'Sansevieria trifasciata',
+          'sizes_id': 2,
+          'light': 'Medium Light',
+          'price': '40',
+          'name': 'Mother-in-laws Tongue',
+          'owner_id': 1
         },
         {
-          id: 5, 
-          image: 'rubber-tree.png',
-          genus: 'Ficus elastica',
-          size: 'Medium',
-          light: 'Low Light',
-          price: '35',
-          name: 'Rubber Tree',
-          owner_id: 1
+          'id': 2,
+          'image': 'dragon-tree.png',
+          'genus': 'Dracaena marginata',
+          'sizes_id': 2,
+          'light': 'Medium Light',
+          'price': '25',
+          'name': 'Dragon Tree',
+          'owner_id': 1
         },
         {
-          id: 6, 
-          image: 'aloe-vera.png',
-          genus: 'Aloe barbadenis Miller',
-          size: 'Medium',
-          light: 'High Light',
-          price: '15',
-          name: 'Aloe Vera',
-          owner_id: 1
+          'id': 1,
+          'image': 'silver-evergreen.png',
+          'genus': 'Aglaonema',
+          'sizes_id': 2,
+          'light': 'Low Light',
+          'price': '60',
+          'name': 'Silver Evergreen',
+          'owner_id': 1
+        },
+        {
+          'id': 4,
+          'image': 'peace-lily.png',
+          'genus': 'Spathiphyllum',
+          'sizes_id': 3,
+          'light': 'High Light',
+          'price': '30',
+          'name': 'Peace - Lily',
+          'owner_id': 1
         }
       ];
 
@@ -111,7 +111,7 @@ describe('app routes', () => {
         id: 4, 
         image: 'peace-lily.png',
         genus:  'Spathiphyllum',
-        size: 'Large',
+        sizes_id: 3,
         light: 'High Light',
         price: '30',
         name:  'Peace - Lily',
@@ -134,7 +134,7 @@ describe('app routes', () => {
 
         image: 'snake-plant.png',
         genus:  'Sansevieria cylindrical',
-        size: 'Medium',
+        sizes_id: 2,
         light: 'Indirect',
         price: '15',
         name:  'Cylindrical Snake Plant',
@@ -170,11 +170,11 @@ describe('app routes', () => {
       const existingPlant = {  
         image: 'mother-tongue.png',
         genus: 'Sansevieria trifasciata',
-        size: 'Medium',
+        sizes_id: 2,
         light: 'Medium Light',
         price: '25',
         name: 'Mother-in-laws Tongue',
-       
+        
       };
 
       const expectation = { 
@@ -206,7 +206,7 @@ describe('app routes', () => {
         id: 5, 
         image: 'rubber-tree.png',
         genus: 'Ficus elastica',
-        size: 'Medium',
+        sizes_id: 2,
         light: 'Low Light',
         price: '35',
         name: 'Rubber Tree',
@@ -217,14 +217,14 @@ describe('app routes', () => {
         .delete('/plants/5')
         .expect('Content-Type', /json/)
         .expect(200);
-
+      
       expect(data.body).toEqual(deletedPlant);
 
       const nothing = await fakeRequest(app)
         .get('/plants/5')
         .expect('Content-Type', /json/)
         .expect(200);
-
+      
       expect(nothing.body).toEqual([]);
     });
 

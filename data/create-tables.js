@@ -16,12 +16,16 @@ async function run() {
                     id SERIAL PRIMARY KEY,
                     email VARCHAR(256) NOT NULL,
                     hash VARCHAR(512) NOT NULL
-                );           
+                );   
+                CREATE TABLE sizes ( 
+                  id SERIAL PRIMARY KEY NOT NULL,
+                  sizes VARCHAR(512) NOT NULL
+                );       
                 CREATE TABLE plants (
                     id SERIAL PRIMARY KEY NOT NULL,
                     image VARCHAR(512) NOT NULL,
                     genus VARCHAR(512) NOT NULL,
-                    size VARCHAR(512) NOT NULL,
+                    sizes_id INTEGER NOT NULL REFERENCES sizes(id), 
                     light VARCHAR(512) NOT NULL,
                     price VARCHAR(512) NOT NULL,
                     name VARCHAR(512) NOT NULL,
